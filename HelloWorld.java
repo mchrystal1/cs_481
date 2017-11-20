@@ -5,6 +5,6 @@ public class HelloWorld {
 	        System.out.println( "fuck!" );
 	        System.out.println("Robert is connected to github with eclipse and keeps talking in third person");
 	        System.exit( 0 ); //success
-	    }//Testing everyone can pull from git
+	    }//Testing changes to git
 }
 // Morgan's update
