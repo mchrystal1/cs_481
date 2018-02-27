@@ -9,10 +9,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 
 
-public static void main (String[] args) throws IOException
-{
-	System.out.println ("testing");
-}
+
 /*
 //Opening a text file that the book will be in
 //create a writer to the print the words to the third txt file
@@ -28,7 +25,7 @@ if (book.exists()) desktop.open(file);
 //print that word there
 while (ReadBuffer1 != null)
 {
-while (readbuffer1 != readbuffer2)ß
+while (readbuffer1 != readbuffer2)
 {
 readbuffer2 += 1;
 if (readbuffer2 == null)
@@ -53,17 +50,45 @@ String line = sc.nextLine();ß
 }
 */
 
+@SuppressWarnings("unused")
 public class Book {
-	public Book book; 
-	public char[] title;
-	public char[] author;
+	public static File bookFile; 
+	public static String title;
+	public static String author;
 	public int age;
-	public int ISBN;
+	public static int ISBN;
+	public static Book bookObject;
 	
-	ArrayList<Book> books = new ArrayList<Book>();
 	
-	public void setBook(Book x){
-		this.book = x; 
+	
+	static ArrayList<Book> booksList = new ArrayList<Book>();
+	
+	public Book(File book, String author, int ISBN, String title) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public static void main (String[] args) throws IOException
+	{
+		System.out.println ("testing");
+	//	File file = null;
+		File book = new File ("/Users/Morgan/Desktop/test1.txt");
+		
+		Desktop desktop = Desktop.getDesktop();
+		
+		desktop.open(book);
+		
+		AddBook(book, "Mary Smith", 109282, "Book1");
+		
+	//	book = new File ("C:~/_Software/test2.txt");
+	//	if (book.exists()) desktop.open(file);
+	//	book = new File ("C:~/_Software/test3.txt");
+	//	if (book.exists()) desktop.open(file);
+	}
+	
+
+	public void setBook(File x){
+		this.bookObject = x; 
 		}
 	
 	public Book getBook(Book x)
@@ -71,16 +96,16 @@ public class Book {
 		return x; 
 	}
 	
-	public void setAuthor(char[] author){
+	public void setAuthor(String author){
 		this.author = author;
 	}
-	public char[] getAuthor(char[] author){
+	public String getAuthor(String author){
 		return author;
 	}
-	public void setTitle(char[] title){
+	public void setTitle(String title){
 		this.title = title;
 	}
-	public char[] getTitle(char[] title){
+	public String getTitle(String title){
 		return title;
 	}
 	public void setISBN(int ISBN){
@@ -91,24 +116,39 @@ public class Book {
 	}
 	
 	@SuppressWarnings("unused")
-	public void AddBook(Book x,char author[],int ISBN,char title[] ){
+	public static void AddBook(File x,String author,int ISBN,String title ){
 		boolean insystem = CompareBook(x);
 		if (insystem = true){
 			System.out.println("Book already exists");
 		}
 		else
 		{
-			books.add(x);
-			x.setAuthor(author);
+			Book addingThis = new Book(book, author, ISBN, title);
+			booksList.add(New(addingThis));
+			/*x.setAuthor(author);
 			x.setISBN(ISBN);
 			x.setTitle(title);
 			x.setBook(x);
+			*/
 		}
 	}
 	
-	public boolean CompareBook(Book x){
+	private static Book New(Book x) {
 		
-			if (books.contains(x))
+		// TODO Auto-generated method stub
+		
+		x.setAuthor(author);
+		x.setISBN(ISBN);
+		x.setTitle(title);
+		//x.setBook(x);
+		
+		return null;
+	}
+
+
+	public static boolean CompareBook(File x){
+		
+			if (booksList.contains(x))
 					{
 						return true;//book in system
 					}
@@ -118,10 +158,10 @@ public class Book {
 	
 	public void DeleteFromSystem(Book x)
 	{
-		if (books.contains(x))
+		if (booksList.contains(x))
 		{
-			int y = books.indexOf(x);
-			books.remove(y);
+			int y = booksList.indexOf(x);
+			booksList.remove(y);
 		}
 		else
 			System.out.println("Book is not in system");
