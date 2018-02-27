@@ -57,13 +57,13 @@ public class Book {
 	public static String author;
 	public int age;
 	public static int ISBN;
-	public static Book bookObject;
+	//public static Book bookObject;
 	
 	
 	
 	static ArrayList<Book> booksList = new ArrayList<Book>();
 	
-	public Book(File book, String author, int ISBN, String title) {
+	public Book(File bookFile, String author, int ISBN, String title) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -72,13 +72,19 @@ public class Book {
 	{
 		System.out.println ("testing");
 	//	File file = null;
-		File book = new File ("/Users/Morgan/Desktop/test1.txt");
+		File newBook = new File ("/Users/Morgan/Desktop/test1.txt");
 		
 		Desktop desktop = Desktop.getDesktop();
 		
-		desktop.open(book);
+		desktop.open(newBook);
 		
-		AddBook(book, "Mary Smith", 109282, "Book1");
+		Scanner reader = new Scanner(System.in);  // Reading from System.in
+		System.out.println("Enter a number: ");
+		int n = reader.nextInt(); // Scans the next token of the input as an int.
+		//once finished
+		reader.close();
+		
+		AddBook(newBook, "Mary Smith", 109282, "Book1");
 		
 	//	book = new File ("C:~/_Software/test2.txt");
 	//	if (book.exists()) desktop.open(file);
@@ -87,10 +93,10 @@ public class Book {
 	}
 	
 
-	public void setBook(File x){
+	/*public void setBook(File x){
 		this.bookObject = x; 
 		}
-	
+	*/
 	public Book getBook(Book x)
 	{
 		return x; 
@@ -123,7 +129,7 @@ public class Book {
 		}
 		else
 		{
-			Book addingThis = new Book(book, author, ISBN, title);
+			Book addingThis = new Book(bookFile, author, ISBN, title);
 			booksList.add(New(addingThis));
 			/*x.setAuthor(author);
 			x.setISBN(ISBN);
