@@ -12,13 +12,13 @@ public class dictionary
 {
 public static void main (String[] args) throws IOException
 {
-PrintWriter writer = new PrintWriter ("/Users/Morgan/Desktop/test3.txt");
-File Book = new File ("/Users/Morgan/Desktop/test1.txt");
+PrintWriter writer = new PrintWriter ("F/Users/Morgan/Desktop/test.txt");
+File Book = new File ("F:/_Software/test1.txt");
 Desktop desktop = Desktop.getDesktop();
 if(Book.exists()) desktop.open(Book);
-File Dictionary = new File ("/Users/Morgan/Desktop/test2.txt");
+File Dictionary = new File ("F:/_Software/test2.txt");
 if (Dictionary.exists()) desktop.open(Dictionary);
-File OutFile = new File ("/Users/Morgan/Desktop/test3.txt");
+File OutFile = new File ("F:/_Software/test3.txt");
 if (OutFile.exists()) desktop.open(OutFile);
 Scanner sc1 = new Scanner(Book);
 Scanner sc2 = new Scanner(Dictionary);
